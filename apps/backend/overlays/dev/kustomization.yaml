@@ -1,0 +1,7 @@
+bases:
+- ../../base
+images:
+- name: hashicorp/http-echo
+  newTag: "0.2.3"   # dev uses v1
+patchesStrategicMerge: []
+

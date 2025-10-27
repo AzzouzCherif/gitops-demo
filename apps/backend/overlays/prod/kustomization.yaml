@@ -1,0 +1,14 @@
+bases:
+- ../../base
+images:
+- name: hashicorp/http-echo
+  newTag: "0.2.3"   # you can change to another tag to demo deploys
+patchesStrategicMerge:
+- |-
+  apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    name: backend
+  spec:
+    replicas: 3
+
