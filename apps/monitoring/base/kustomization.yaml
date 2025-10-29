@@ -1,4 +1,5 @@
 resources:
 - https://github.com/prometheus-operator/kube-prometheus/releases/download/v0.13.0/manifests/setup
 - https://github.com/prometheus-operator/kube-prometheus/releases/download/v0.13.0/manifests/
-
+- argocd-servicemonitor.yaml
+- grafana-dashboards.yaml

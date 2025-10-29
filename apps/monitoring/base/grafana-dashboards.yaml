@@ -1,0 +1,44 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana-dashboards
+  namespace: monitoring
+  labels:
+    grafana_dashboard: "1"
+data:
+  argocd-dashboard.json: |
+    {
+      "title": "ArgoCD Overview",
+      "tags": ["argocd"],
+      "panels": [
+        {
+          "type": "graph",
+          "title": "Sync Operations",
+          "targets": [
+            {
+              "expr": "argocd_app_sync_total",
+              "legendFormat": "{{app}}"
+            }
+          ]
+        }
+      ]
+    }
+
+  cert-manager-dashboard.json: |
+    {
+      "title": "Cert-Manager Certificates",
+      "tags": ["cert-manager"],
+      "panels": [
+        {
+          "type": "graph",
+          "title": "Certificates Issued",
+          "targets": [
+            {
+              "expr": "certmanager_certificate_expiration_timestamp_seconds",
+              "legendFormat": "{{name}}"
+            }
+          ]
+        }
+      ]
+    }
+
