@@ -3,6 +3,6 @@ bases:
 - namespace.yaml
 images:
 - name: hashicorp/http-echo
-  newTag: "0.2.4"   # dev uses v1
+  newTag: "0.2.3"   # dev uses v1
 patchesStrategicMerge: []
 
