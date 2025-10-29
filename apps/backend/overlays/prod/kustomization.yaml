@@ -1,5 +1,6 @@
 bases:
 - ../../base
+- namespace.yaml
 images:
 - name: hashicorp/http-echo
   newTag: "0.2.3"   # you can change to another tag to demo deploys

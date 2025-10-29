@@ -36,3 +36,41 @@ spec:
       prune: true
       selfHeal: true
 
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: frontend-prod
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/AzzouzCherif/gitops-demo.git'
+    targetRevision: main
+    path: apps/frontend/overlays/prod
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: frontend-prod
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: backend-prod
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/AzzouzCherif/gitops-demo.git'
+    targetRevision: main
+    path: apps/backend/overlays/prod
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: backend-prod
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
