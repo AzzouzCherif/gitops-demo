@@ -1,3 +1,4 @@
 resources:
 - apps.yaml
 - ingress.yaml
+- tls-certificate.yaml
