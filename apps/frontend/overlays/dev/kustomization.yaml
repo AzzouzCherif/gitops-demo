@@ -1,4 +1,6 @@
 bases:
 - ../../base
 patchesStrategicMerge: []
-
+images:
+- name: nginx
+  newTag: "BADTAG"
