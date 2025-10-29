@@ -83,9 +83,33 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/AzzouzCherif/gitops-demo.git'
-    targetRevision: main
-    path: apps/monitoring/base
+    repoURL: https://prometheus-community.github.io/helm-charts
+    chart: kube-prometheus-stack
+    targetRevision: 65.1.0
+    helm:
+      releaseName: monitoring
+      values: |
+        grafana:
+          adminPassword: admin
+          ingress:
+            enabled: true
+            ingressClassName: nginx
+            hosts:
+              - grafana.company.local
+            tls:
+              - secretName: company-local-tls-secret
+                hosts:
+                  - grafana.company.local
+        prometheus:
+          ingress:
+            enabled: true
+            ingressClassName: nginx
+            hosts:
+              - prometheus.company.local
+            tls:
+              - secretName: company-local-tls-secret
+                hosts:
+                  - prometheus.company.local
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
